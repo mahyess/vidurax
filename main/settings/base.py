@@ -23,7 +23,7 @@ SECRET_KEY = 'django-insecure-9bfvhpjyvw!4e+gl8=s9o-1o3p39&u@gmrt3l4(!5$h(-vy1en
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -118,8 +118,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = "/static/"
-STATIC_ROOT = "staticfiles"
 STATICFILES_DIRS = ["templates/static/"]
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = "mediafiles"

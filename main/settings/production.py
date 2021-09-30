@@ -5,6 +5,7 @@ from storages.backends.s3boto3 import S3Boto3Storage
 from decouple import config
 
 ALLOWED_HOSTS = [
+    '13.233.18.13',
     "*"
 ]
 

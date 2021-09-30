@@ -33,17 +33,18 @@ class Experiment(models.Model):
 
 
 class ExperimentProcedure(models.Model):
-    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="experiments")
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="procedures")
     icon = models.ImageField(upload_to="images/experiment-procedures/icons/", null=True, blank=True)
     step = models.PositiveSmallIntegerField(default=1)
     start_time = models.PositiveSmallIntegerField(default=0)
     stop_time = models.PositiveSmallIntegerField(default=0)
 
     def __str__(self):
-        return self.experiment
+        return f"{self.experiment.title} - step {self.step}"
 
 
 class QuizQuestion(models.Model):
+    chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name="quiz_questions")
     question = models.CharField(max_length=255)
     icon = models.ImageField(upload_to="images/quiz-questions/icons/", null=True, blank=True)
 
@@ -59,5 +60,5 @@ class QuizAnswer(models.Model):
 
     def __str__(self):
         if self.answer_image:
-            return self.answer_image
+            return str(self.answer_image)
         return self.answer

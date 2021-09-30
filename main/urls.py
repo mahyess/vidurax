@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
+from experiments.views import SubjectModelViewSet, ChapterModelViewSet, ExperimentModelViewSet
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
 ]
+
+router = DefaultRouter()
+router.register("subjects", SubjectModelViewSet, basename="Subject")
+router.register("chapters", ChapterModelViewSet, basename="Chapter")
+router.register("experiments", ExperimentModelViewSet, basename="Experiment")
+
+urlpatterns += router.urls

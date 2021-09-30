@@ -39,7 +39,7 @@ class StaticStorage(S3Boto3Storage):
 
 STATIC_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-STATICFILES_STORAGE = StaticStorage
+STATICFILES_STORAGE = "StaticStorage"
 
 
 # s3 public media settings
@@ -50,7 +50,7 @@ class MediaStorage(S3Boto3Storage):
 
 MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
-DEFAULT_FILE_STORAGE = MediaStorage
+DEFAULT_FILE_STORAGE = "MediaStorage"
 
 # # ses email settings
 # AWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')

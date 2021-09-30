@@ -5,7 +5,7 @@ from storages.backends.s3boto3 import S3Boto3Storage
 from decouple import config
 
 ALLOWED_HOSTS = [
-    'vidura.com',
+    "*"
 ]
 
 rds_details: dict = json.loads(get_rds_secret())

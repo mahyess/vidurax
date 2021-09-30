@@ -33,24 +33,25 @@ AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 
 # s3 static settings
 class StaticStorage(S3Boto3Storage):
-    bucket_name = 'my-app-bucket'
+    bucket_name = AWS_STORAGE_BUCKET_NAME
     location = 'static'
 
 
 STATIC_LOCATION = 'static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
-STATICFILES_STORAGE = "StaticStorage"
+STATICFILES_STORAGE = "main.settings.production.StaticStorage"
 
 
 # s3 public media settings
 class MediaStorage(S3Boto3Storage):
-    bucket_name = 'my-app-bucket'
+    bucket_name = AWS_STORAGE_BUCKET_NAME
     location = 'media'
 
 
 MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
-DEFAULT_FILE_STORAGE = "MediaStorage"
+DEFAULT_FILE_STORAGE = "main.settings.production.MediaStorage"
+
 
 # # ses email settings
 # AWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')

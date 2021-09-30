@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "tinymce",
+    "storages",
     "rest_framework",
     "django_filters",
     "experiments.apps.ExperimentsConfig",

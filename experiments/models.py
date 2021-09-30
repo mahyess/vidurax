@@ -43,6 +43,15 @@ class ExperimentProcedure(models.Model):
         return f"{self.experiment.title} - step {self.step}"
 
 
+class ExperimentObservation(models.Model):
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="observations")
+    title = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.experiment.title} - {self.title}"
+
+
 class QuizQuestion(models.Model):
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name="quiz_questions")
     question = models.CharField(max_length=255)

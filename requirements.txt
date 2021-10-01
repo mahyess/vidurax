@@ -2,6 +2,7 @@ asgiref==3.4.1
 boto3==1.18.51
 botocore==1.21.51
 Django==3.2.7
+django-cors-headers==3.9.0
 django-filter==21.1
 django-storages==1.11.1
 django-tinymce==3.3.0

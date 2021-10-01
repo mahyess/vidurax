@@ -52,6 +52,8 @@ MEDIA_LOCATION = 'media'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 DEFAULT_FILE_STORAGE = "main.settings.production.MediaStorage"
 
+# cors
+CORS_ALLOW_ALL_ORIGINS = True
 
 # # ses email settings
 # AWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')

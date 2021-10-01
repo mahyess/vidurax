@@ -12,7 +12,7 @@ class Subject(models.Model):
 class Chapter(models.Model):
     title = models.CharField(max_length=255)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name="chapters")
-    video = models.FileField(upload_to="images/chapter/videos/", null=True, blank=True)
+    video = models.FileField(verbose_name="AILA Video", upload_to="images/chapter/videos/", null=True, blank=True)
     aim = HTMLField(blank=True)
     apparatus = HTMLField(blank=True)
     chemicals_required = HTMLField(blank=True)
@@ -27,7 +27,7 @@ class Experiment(models.Model):
     title = models.CharField(max_length=255)
     chapter = models.ForeignKey(Chapter, on_delete=models.CASCADE, related_name="experiments")
     icon = models.ImageField(upload_to="images/experiment/icons/", null=True, blank=True)
-    video = models.FileField(upload_to="images/experiment/videos/", )
+    video = models.FileField(verbose_name="experiment video", upload_to="images/experiment/videos/", )
 
     def __str__(self):
         return self.title

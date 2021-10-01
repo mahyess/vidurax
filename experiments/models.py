@@ -12,6 +12,7 @@ class Subject(models.Model):
 class Chapter(models.Model):
     title = models.CharField(max_length=255)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name="chapters")
+    video = models.FileField(upload_to="images/chapter/videos/", null=True, blank=True)
     aim = HTMLField(blank=True)
     apparatus = HTMLField(blank=True)
     chemicals_required = HTMLField(blank=True)

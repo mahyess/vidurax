@@ -25,8 +25,8 @@ urlpatterns = [
 ]
 
 router = DefaultRouter()
-router.register("subjects", SubjectModelViewSet, basename="Subject")
-router.register("chapters", ChapterModelViewSet, basename="Chapter")
-router.register("experiments", ExperimentModelViewSet, basename="Experiment")
+router.register("api/subjects", SubjectModelViewSet, basename="Subject")
+router.register("api/chapters", ChapterModelViewSet, basename="Chapter")
+router.register("api/experiments", ExperimentModelViewSet, basename="Experiment")
 
 urlpatterns += router.urls

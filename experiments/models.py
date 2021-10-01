@@ -35,6 +35,7 @@ class Experiment(models.Model):
 
 class ExperimentProcedure(models.Model):
     experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE, related_name="procedures")
+    title = models.CharField(max_length=255)
     icon = models.ImageField(upload_to="images/experiment-procedures/icons/", null=True, blank=True)
     step = models.PositiveSmallIntegerField(default=1)
     start_time = models.PositiveSmallIntegerField(default=0)

@@ -7,6 +7,7 @@ from .models import (
     QuizQuestion,
     QuizAnswer,
     ChapterObservation,
+    AilaTimestamp,
 )
 
 
@@ -54,6 +55,13 @@ class QuizQuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuizAnswer)
 class QuizAnswerAdmin(admin.ModelAdmin):
+    pass
+    # def has_add_permission(self, request):
+    #     return False
+
+
+@admin.register(AilaTimestamp)
+class AilaTimestampAdmin(admin.ModelAdmin):
     pass
     # def has_add_permission(self, request):
     #     return False

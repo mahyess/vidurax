@@ -8,6 +8,7 @@ from experiments.models import (
     QuizQuestion,
     QuizAnswer,
     ChapterObservation,
+    AilaTimestamp,
 )
 
 
@@ -57,10 +58,17 @@ class ExperimentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class AilaTimestampSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AilaTimestamp
+        fields = "__all__"
+
+
 class ChapterWithExperimentsSerializer(serializers.ModelSerializer):
     experiments = ExperimentSerializer(many=True)
     quiz_questions = QuizQuestionSerializer(many=True)
     observations = ChapterObservationSerializer(many=True)
+    aila_timestamps = AilaTimestampSerializer(many=True)
 
     class Meta:
         model = Chapter

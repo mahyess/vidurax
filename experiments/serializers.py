@@ -1,7 +1,14 @@
 from rest_framework import serializers
 
-from experiments.models import Subject, Chapter, Experiment, ExperimentProcedure, QuizQuestion, QuizAnswer, \
-    ExperimentObservation
+from experiments.models import (
+    Subject,
+    Chapter,
+    Experiment,
+    ExperimentProcedure,
+    QuizQuestion,
+    QuizAnswer,
+    ChapterObservation,
+)
 
 
 class SubjectSerializer(serializers.ModelSerializer):
@@ -36,15 +43,14 @@ class ExperimentProcedureSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class ExperimentObservationSerializer(serializers.ModelSerializer):
+class ChapterObservationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ExperimentObservation
+        model = ChapterObservation
         fields = "__all__"
 
 
 class ExperimentSerializer(serializers.ModelSerializer):
     procedures = ExperimentProcedureSerializer(many=True)
-    observations = ExperimentObservationSerializer(many=True)
 
     class Meta:
         model = Experiment
@@ -54,6 +60,7 @@ class ExperimentSerializer(serializers.ModelSerializer):
 class ChapterWithExperimentsSerializer(serializers.ModelSerializer):
     experiments = ExperimentSerializer(many=True)
     quiz_questions = QuizQuestionSerializer(many=True)
+    observations = ChapterObservationSerializer(many=True)
 
     class Meta:
         model = Chapter

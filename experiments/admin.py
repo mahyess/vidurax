@@ -1,5 +1,13 @@
 from django.contrib import admin
-from .models import Subject, Chapter, Experiment, ExperimentProcedure, QuizQuestion, QuizAnswer, ExperimentObservation
+from .models import (
+    Subject,
+    Chapter,
+    Experiment,
+    ExperimentProcedure,
+    QuizQuestion,
+    QuizAnswer,
+    ChapterObservation,
+)
 
 
 @admin.register(Subject)
@@ -30,8 +38,8 @@ class ExperimentProcedureAdmin(admin.ModelAdmin):
     #     return False
 
 
-@admin.register(ExperimentObservation)
-class ExperimentObservationAdmin(admin.ModelAdmin):
+@admin.register(ChapterObservation)
+class ChapterObservationAdmin(admin.ModelAdmin):
     pass
     # def has_add_permission(self, request):
     #     return False

@@ -87,6 +87,9 @@ class ExperimentProcedure(models.Model):
     def __str__(self):
         return f"{self.experiment.title} - step {self.step}"
 
+    class Meta:
+        ordering = ["step"]
+
 
 class QuizQuestion(models.Model):
     chapter = models.ForeignKey(

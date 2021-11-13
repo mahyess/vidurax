@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.db import models
 from tinymce.models import HTMLField
 
@@ -118,3 +120,40 @@ class QuizAnswer(models.Model):
         if self.answer_image:
             return str(self.answer_image)
         return self.answer
+
+
+class StudentCourseStatus(models.Model):
+    student = models.CharField(max_length=255, null=True, blank=True)
+    PHYSICS = "P"
+    CHEMISTRY = "C"
+    BIOLOGY = "B"
+    COURSE_CHOICES = (
+        (PHYSICS, "Physics"),
+        (CHEMISTRY, "Chemistry"),
+        (BIOLOGY, "Biology"),
+    )
+    course = models.CharField(max_length=2, choices=COURSE_CHOICES, default=PHYSICS)
+    start_time = models.DateTimeField()
+    end_time = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{str(self.student)}"
+
+    def save(self, **kwargs):
+        if self.start_time and self.end_time:
+            if self.start_time.date() != self.end_time.date():
+                next_end_time = self.end_time
+                self.end_time = self.start_time.replace(
+                    hour=23, minute=59, second=59, microsecond=999999
+                )
+                super().save(**kwargs)
+                next_start_time = self.start_time + timedelta(days=1)
+                next_start_time = next_start_time.replace(
+                    hour=0, minute=0, second=0, microsecond=0
+                )
+                instance = StudentCourseStatus.objects.get(pk=self.pk)
+                instance.id = None
+                instance.start_time = next_start_time
+                instance.end_time = next_end_time
+                instance.save()
+        super().save(**kwargs)

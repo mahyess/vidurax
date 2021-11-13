@@ -8,7 +8,7 @@ from experiments.models import (
     QuizQuestion,
     QuizAnswer,
     ChapterObservation,
-    AilaTimestamp,
+    AilaTimestamp, StudentCourseStatus,
 )
 
 
@@ -72,4 +72,10 @@ class ChapterWithExperimentsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Chapter
+        fields = "__all__"
+
+
+class StudentCourseStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = StudentCourseStatus
         fields = "__all__"

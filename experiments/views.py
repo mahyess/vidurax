@@ -4,6 +4,7 @@ from django.db.models import Func, F, Sum, Value, ExpressionWrapper, fields
 from django.db.models.functions import Coalesce
 from rest_framework import viewsets
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from experiments.models import Subject, Chapter, Experiment, StudentCourseStatus
@@ -35,6 +36,7 @@ class ExperimentModelViewSet(viewsets.ReadOnlyModelViewSet):
 class StudentCourseStatusModelViewSet(viewsets.ModelViewSet):
     queryset = StudentCourseStatus.objects.all()
     serializer_class = StudentCourseStatusSerializer
+    permission_classes = [IsAuthenticated]
 
     @action(detail=False, methods=['GET'])
     def summary(self, request):

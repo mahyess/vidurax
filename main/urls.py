@@ -19,10 +19,13 @@ from rest_framework.routers import DefaultRouter
 
 from experiments.views import SubjectModelViewSet, ChapterModelViewSet, ExperimentModelViewSet, \
     StudentCourseStatusModelViewSet
+from users.views import LoginAPI, RegisterAPI
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('tinymce/', include('tinymce.urls')),
+    path('api/login/', LoginAPI.as_view()),
+    path('api/register/', RegisterAPI.as_view()),
 ]
 
 router = DefaultRouter()

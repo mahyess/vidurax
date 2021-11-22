@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     "storages",
     "corsheaders",
     "rest_framework",
+    'knox',
     "django_filters",
+    "users.apps.UserConfig",
     "experiments.apps.ExperimentsConfig",
 ]
 
@@ -54,8 +56,11 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_AUTHENTICATION_CLASSES': ('knox.auth.TokenAuthentication',),
 }
+
+AUTH_USER_MODEL = "users.User"
 
 ROOT_URLCONF = 'main.urls'
 
